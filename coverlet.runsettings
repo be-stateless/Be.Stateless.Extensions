@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/GlobalTool.md -->
+<!-- https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/VSTestIntegration.md -->
+<RunSettings>
+   <DataCollectionRunSettings>
+      <DataCollectors>
+         <DataCollector friendlyName="XPlat code coverage">
+            <Configuration>
+               <IncludeTestAssembly>false</IncludeTestAssembly>
+               <Format>cobertura</Format>
+               <Exclude>[*.Tests]*</Exclude>
+               <ExcludeByAttribute>CompilerGeneratedAttribute,GeneratedCodeAttribute,ObsoleteAttribute</ExcludeByAttribute>
+               <ExcludeByFile>*.g.cs</ExcludeByFile>
+               <SingleHit>false</SingleHit>
+               <SkipAutoProps>true</SkipAutoProps>
+               <UseSourceLink>false</UseSourceLink>
+            </Configuration>
+         </DataCollector>
+      </DataCollectors>
+   </DataCollectionRunSettings>
+</RunSettings>

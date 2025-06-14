@@ -1,13 +1,13 @@
 #region Copyright & License
 
-// Copyright © 2012 - 2025 François Chabot
-//
+// Copyright © 2012-2025 François Chabot
+// 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+// 
 // http://www.apache.org/licenses/LICENSE-2.0
-//
+// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,10 +19,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
-using FluentAssertions;
 using Moq;
-using Xunit;
-using static FluentAssertions.FluentActions;
 using Range = Moq.Range;
 
 namespace Be.Stateless.Extensions;
@@ -165,7 +162,6 @@ public class StringExtensionsFixture
 	[Theory]
 	[InlineData(data: null)]
 	[InlineData("")]
-	[InlineData(@"\name.txt")]
 	[InlineData("/name.txt")]
 	[SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters")]
 	public void IsValidFileNameReturnsFalse(string @string)
@@ -173,6 +169,17 @@ public class StringExtensionsFixture
 		@string.IsValidFileName()
 			.Should()
 			.BeFalse();
+	}
+
+	[Theory]
+	[InlineData(@"\name.txt")]
+	[SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters")]
+	public void IsValidFileNameReturnsFalseOnWindows(string @string)
+	{
+		if (OperatingSystem.IsWindows())
+			@string.IsValidFileName()
+				.Should()
+				.BeFalse();
 	}
 
 	[Theory]

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+      <TargetFramework>net9.0</TargetFramework>
+      <OutputType>Exe</OutputType>
+      <NoWarn>$(NoWarn);CS0169;CS0649;</NoWarn>
+      <NukeTelemetryVersion>1</NukeTelemetryVersion>
+      <IsPackable>false</IsPackable>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageDownload Include="GitVersion.Tool" Version="[6.4.0]"/>
+      <PackageDownload Include="ReportGenerator" Version="[5.4.16]"/>
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Nuke.Common" Version="9.0.4"/>
+   </ItemGroup>
+
+   <ItemGroup>
+      <Using Include="Nuke.Common"/>
+   </ItemGroup>
+
+</Project>

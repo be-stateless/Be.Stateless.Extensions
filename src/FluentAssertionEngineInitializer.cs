@@ -1,6 +1,6 @@
 #region Copyright & License
 
-// Copyright © 2012 - 2025 François Chabot
+// Copyright © 2012-2025 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,9 +16,18 @@
 
 #endregion
 
-using System.Diagnostics.CodeAnalysis;
+using Be.Stateless;
+using FluentAssertions.Extensibility;
 
-[assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
-[assembly: SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "Using nested classes is a common organizational approach in xUnit tests.")]
-[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider")]
-[assembly: SuppressMessage("Maintainability", "CA1515:Consider making public types internal", Justification = "Unit requires test classes to be public")]
+[assembly: AssertionEngineInitializer(typeof(FluentAssertionEngineInitializer), nameof(FluentAssertionEngineInitializer.AcknowledgeSoftWarning))]
+
+namespace Be.Stateless;
+
+// see https://fluentassertions.com/introduction#licensing
+file static class FluentAssertionEngineInitializer
+{
+	public static void AcknowledgeSoftWarning()
+	{
+		License.Accepted = true;
+	}
+}

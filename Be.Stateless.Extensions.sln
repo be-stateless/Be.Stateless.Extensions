@@ -1,24 +1,38 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Build Properties.", ".Build Properties.", "{AE33B1A7-3408-4602-827F-1C0C5CFB58FD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Build Definition.", ".Build Definition.", "{3BDD5A05-486F-47D8-AC9F-FC200CC6A0B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Build Settings.", ".Build Settings.", "{A43B03C5-5954-460A-865C-6053D6C7D562}"
 	ProjectSection(SolutionItems) = preProject
-		NuGet.config = NuGet.config
+		coverlet.runsettings = coverlet.runsettings
 		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Packages.props = src\Directory.Packages.props
+		src\FluentAssertionEngineInitializer.cs = src\FluentAssertionEngineInitializer.cs
+		GitVersion.yml = GitVersion.yml
+		global.json = global.json
+		src\GlobalSuppressions.Tests.cs = src\GlobalSuppressions.Tests.cs
+		NuGet.config = NuGet.config
+		stryker-config.json = stryker-config.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items.", ".Solution Items.", "{FB2DB540-81B8-4FA6-A37F-2DD74DE501FC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Build Workflows.", ".Build Workflows.", "{D2A726B4-EFF0-4D3D-8969-CA7B4F79F142}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ContinuousDelivery.yml = .github\workflows\ContinuousDelivery.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items.", ".Solution Items.", "{24D00F41-908D-4ED7-8559-84A9EF19A2DF}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		.config\dotnet-tools.json = .config\dotnet-tools.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.Extensions", "src\Be.Stateless.Extensions\Be.Stateless.Extensions.csproj", "{F8D25C1E-FED2-4733-894B-FDA44FBFD18A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "src\Build\Build.csproj", "{7EF5F485-4112-48A6-A3C4-7537F5EF4B88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.Extensions.Tests", "src\Be.Stateless.Extensions.Tests\Be.Stateless.Extensions.Tests.csproj", "{4AAA8B61-2ACF-48B4-B2A1-208B98C887BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Stateless.Extensions", "src\Be.Stateless.Extensions\Be.Stateless.Extensions.csproj", "{F0B3FADA-85B4-4DE5-9C87-B559C4141903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Stateless.Extensions.Tests", "src\Be.Stateless.Extensions.Tests\Be.Stateless.Extensions.Tests.csproj", "{09AE7633-ED6D-42FD-AAAA-77C3906C0C1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,19 +40,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F8D25C1E-FED2-4733-894B-FDA44FBFD18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8D25C1E-FED2-4733-894B-FDA44FBFD18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8D25C1E-FED2-4733-894B-FDA44FBFD18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8D25C1E-FED2-4733-894B-FDA44FBFD18A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AAA8B61-2ACF-48B4-B2A1-208B98C887BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AAA8B61-2ACF-48B4-B2A1-208B98C887BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AAA8B61-2ACF-48B4-B2A1-208B98C887BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AAA8B61-2ACF-48B4-B2A1-208B98C887BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF5F485-4112-48A6-A3C4-7537F5EF4B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF5F485-4112-48A6-A3C4-7537F5EF4B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B3FADA-85B4-4DE5-9C87-B559C4141903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0B3FADA-85B4-4DE5-9C87-B559C4141903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0B3FADA-85B4-4DE5-9C87-B559C4141903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B3FADA-85B4-4DE5-9C87-B559C4141903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09AE7633-ED6D-42FD-AAAA-77C3906C0C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09AE7633-ED6D-42FD-AAAA-77C3906C0C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09AE7633-ED6D-42FD-AAAA-77C3906C0C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09AE7633-ED6D-42FD-AAAA-77C3906C0C1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {790F138E-B437-42D2-B8C8-38A7C8726A95}
+	GlobalSection(NestedProjects) = preSolution
+		{7EF5F485-4112-48A6-A3C4-7537F5EF4B88} = {3BDD5A05-486F-47D8-AC9F-FC200CC6A0B6}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,10 @@
+# contrary to general guidelines https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
+# basically, ignore all JetBrains Rider IDE files...
+/*
+!/.idea.*/
+!/.gitignore
+/.idea.*/*
+!/.idea.*/.idea/
+/.idea.*/.idea/*
+# ... but keep code styles settings that cannot be configured through layers or .editorconfig (yet)
+!/.idea.*/.idea/codeStyles/
