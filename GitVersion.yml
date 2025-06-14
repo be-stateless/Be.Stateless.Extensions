@@ -1,0 +1,7 @@
+# built-in configuration: https://gitversion.net/docs/workflows/GitHubFlow/v1.yml
+workflow: GitHubFlow/v1
+branches:
+   main:
+      mode: ContinuousDeployment
+   feature:
+      mode: ContinuousDelivery

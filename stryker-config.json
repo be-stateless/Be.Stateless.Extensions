@@ -1,0 +1,14 @@
+{
+   "stryker-config": {
+      "mutation-level": "Complete",
+      "ignore-methods": [
+         "ToString",
+         "ConfigureAwait",
+         "*Exception.ctor"
+      ],
+      "reporters": [
+         "dots",
+         "html"
+      ]
+   }
+}

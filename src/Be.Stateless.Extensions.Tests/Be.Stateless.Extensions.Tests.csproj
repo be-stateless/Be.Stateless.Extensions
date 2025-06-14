@@ -1,36 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
    <PropertyGroup>
-      <RootNamespace>Be.Stateless</RootNamespace>
       <AssemblyName>Be.Stateless.Extensions.Tests</AssemblyName>
       <Description>Unit tests for extension methods for general purpose .NET development.</Description>
-      <TargetFramework>net8.0</TargetFramework>
-      <ImplicitUsings>disable</ImplicitUsings>
-      <LangVersion>default</LangVersion>
-      <Nullable>enable</Nullable>
-      <IsPublishable>false</IsPublishable>
-   </PropertyGroup>
-
-   <PropertyGroup>
-      <AnalysisLevel>latest</AnalysisLevel>
-      <AnalysisMode>All</AnalysisMode>
-      <EnableNETAnalyzers>true</EnableNETAnalyzers>
-      <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
    </PropertyGroup>
 
    <ItemGroup>
-      <PackageReference Include="coverlet.collector" Version="6.0.4">
-         <PrivateAssets>all</PrivateAssets>
-         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="FluentAssertions" Version="8.1.1"/>
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
-      <PackageReference Include="Moq" Version="4.20.72"/>
-      <PackageReference Include="xunit" Version="2.9.3"/>
-      <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
-         <PrivateAssets>all</PrivateAssets>
-         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
+      <PackageReference Include="coverlet.collector"/>
+      <PackageReference Include="FluentAssertions"/>
+      <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+      <PackageReference Include="Moq"/>
+      <PackageReference Include="xunit"/>
+      <PackageReference Include="xunit.runner.visualstudio"/>
    </ItemGroup>
 
    <ItemGroup>

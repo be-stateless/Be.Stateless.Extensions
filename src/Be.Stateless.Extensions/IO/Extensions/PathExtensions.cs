@@ -69,13 +69,12 @@ public static class PathExtensions
 	{
 		// @formatter:keep_existing_linebreaks true
 		// @formatter:wrap_chained_method_calls wrap_if_long
-		if (separators == null || separators.Length == 0) separators = [Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar];
 		if (paths == null || paths.Length == 0) return string.Empty;
+		if (separators == null || separators.Length == 0) separators = [Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar];
 		var commonSegments = paths.Select(p => p.Split(separators, StringSplitOptions.RemoveEmptyEntries))
-			.Aggregate(
-				static (accumulatedCommonSegments, pathSegments) => accumulatedCommonSegments
-					.TakeWhile((segment, i) => i < pathSegments.Length && pathSegments[i].Equals(segment, StringComparison.OrdinalIgnoreCase))
-					.ToArray());
+			.Aggregate(static (accumulatedCommonSegments, pathSegments) => accumulatedCommonSegments
+				.TakeWhile((segment, i) => i < pathSegments.Length && pathSegments[i].Equals(segment, StringComparison.OrdinalIgnoreCase))
+				.ToArray());
 		// https://stackoverflow.com/questions/14897121/using-enumerable-aggregate-method-over-an-empty-sequence
 		return string.Join(separators[0].ToString(), commonSegments);
 	}

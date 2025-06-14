@@ -33,8 +33,7 @@ public static class ConfigurationExtensions
 	/// <exception cref="InvalidOperationException">Thrown when the connection string is not defined or is empty.</exception>
 	public static string GetRequiredConnectionString(this IConfiguration configuration, string name)
 	{
-		var connectionString = configuration.GetConnectionString(name);
-		if (connectionString.IsNullOrEmpty()) throw new InvalidOperationException($"Configuration does not define the connection string '{name}'.");
-		return connectionString;
+		return configuration.GetConnectionString(name)
+			.UnlessIsNullOrEmpty($"Configuration does not define the connection string '{name}'.");
 	}
 }

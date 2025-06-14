@@ -1,7 +1,7 @@
 root = true
 
 #
-# Copyright © 2012 - 2024 François Chabot
+# Copyright © 2012 - 2025 François Chabot
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,11 +19,12 @@ root = true
 [*]
 charset = utf-8
 end_of_line = crlf
-trim_trailing_whitespace = true
-insert_final_newline = true
-indent_style = space
 indent_size = 3
+indent_style = space
+insert_final_newline = true
+max_line_length = 192
 tab_width = 3
+trim_trailing_whitespace = true
 
 # Microsoft .NET properties
 csharp_new_line_before_open_brace = accessors, control_blocks, events, indexers, local_functions, methods, properties, types

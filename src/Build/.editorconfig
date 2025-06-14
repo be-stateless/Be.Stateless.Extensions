@@ -1,0 +1,45 @@
+[*.cs]
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+dotnet_style_require_accessibility_modifiers = never:warning
+
+csharp_style_expression_bodied_methods = true:silent
+csharp_style_expression_bodied_properties = true:warning
+csharp_style_expression_bodied_indexers = true:warning
+csharp_style_expression_bodied_accessors = true:warning
+
+dotnet_diagnostic.CA1050.severity = none
+dotnet_diagnostic.CA1062.severity = none
+dotnet_diagnostic.CA1515.severity = none
+dotnet_diagnostic.CA1724.severity = none
+dotnet_diagnostic.CA1822.severity = none
+dotnet_diagnostic.CA1852.severity = none
+dotnet_diagnostic.CA2211.severity = none
+dotnet_diagnostic.CA2225.severity = none
+dotnet_diagnostic.IDE0044.severity = none
+dotnet_diagnostic.IDE0051.severity = none
+dotnet_diagnostic.IDE1006.severity = none
+dotnet_diagnostic.RCS1110.severity = none
+dotnet_diagnostic.RCS1169.severity = none
+dotnet_diagnostic.S2365.severity = none
+dotnet_diagnostic.S3903.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1111.severity = none
+dotnet_diagnostic.SA1306.severity = none
+dotnet_diagnostic.SA1400.severity = none
+
+resharper_all_underscore_local_parameter_name_highlighting = none
+resharper_class_never_instantiated_global_highlighting = none
+resharper_inconsistent_naming_highlighting = none
+resharper_interpolated_string_expression_is_not_i_formattable_highlighting = none
+resharper_lambda_expression_can_be_made_static_highlighting = none
+resharper_member_can_be_made_static_local_highlighting = none
+resharper_nullable_warning_suppression_is_used_highlighting = none
+resharper_variable_hides_outer_variable_highlighting = none
+
+# @formatter:off https://www.jetbrains.com/help/rider/Code_Cleanup__Index.html#use-different-cleanup-profiles-simultaneously 
+[BuildDefinition.cs]
+resharper_substitution_for_cleanup_profile=* => Enhanced Simple Cleanup
+# @formatter:on
