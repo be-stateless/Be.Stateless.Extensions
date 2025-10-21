@@ -18,22 +18,38 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Be.Stateless.IO.Extensions;
 
 public class PathExtensionsFixture
 {
 	[Fact]
+	[SuppressMessage("ReSharper", "RedundantStringFormatCall")]
 	public void CommonFolderPath()
+	{
+		var paths = new[] {
+			@"c/a/b/c/d/e/f",
+			"c/a/b/c/d/k",
+			"c/a/b/c"
+		};
+		paths.GetCommonPath()
+			.Should()
+			.Be(string.Format("c{0}a{0}b{0}c", Path.DirectorySeparatorChar));
+	}
+
+	[Fact]
+	public void CommonFolderPathOnWindows()
 	{
 		var paths = new[] {
 			@"c\a\b/c\d\e\f",
 			"c/a/b/c/d/k",
 			"c/a/b/c"
 		};
-		paths.GetCommonPath()
-			.Should()
-			.Be(@"c\a\b\c");
+		if (OperatingSystem.IsWindows())
+			paths.GetCommonPath()
+				.Should()
+				.Be(@"c\a\b\c");
 	}
 
 	[Fact]
