@@ -1,6 +1,6 @@
 <!--
 
-  Copyright © 2012 - 2025 François Chabot
+  Copyright © 2012-2025 François Chabot
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@
    <PropertyGroup>
       <Authors>François Chabot</Authors>
       <Company>be.stateless</Company>
-      <Copyright>Copyright © 2012 - $([System.DateTime]::Now.Year) be.stateless. All rights reserved.</Copyright>
+      <Copyright>Copyright © 2012-$([System.DateTime]::Now.Year) be.stateless. All rights reserved.</Copyright>
       <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
       <Product Condition="'$(CI)' != 'true'">.NET Factory (Local $(Configuration) Build)</Product>

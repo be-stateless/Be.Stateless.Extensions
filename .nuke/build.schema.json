@@ -24,6 +24,7 @@
     "ExecutableTarget": {
       "type": "string",
       "enum": [
+        "AuthenticateGitHubPackageSources",
         "Build",
         "CI",
         "Clean",
@@ -117,18 +118,23 @@
             "Release"
           ]
         },
+        "PreviewFeedApiKey": {
+          "type": "string",
+          "description": "NuGet Packages preview feed API key — a GitHub Personal Access Token (PAT) with read:packages scope",
+          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+        },
         "PreviewFeedUrl": {
           "type": "string",
-          "description": "NuGet packages' preview feed URL"
+          "description": "NuGet packages preview feed URL"
         },
         "ReleaseFeedApiKey": {
           "type": "string",
-          "description": "NuGet packages' release feed API Key",
+          "description": "NuGet Packages release feed API key — a NuGet.org API key used for publishing packages",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "ReleaseFeedUrl": {
           "type": "string",
-          "description": "NuGet packages' release feed URL"
+          "description": "NuGet packages release feed URL"
         },
         "Solution": {
           "type": "string",

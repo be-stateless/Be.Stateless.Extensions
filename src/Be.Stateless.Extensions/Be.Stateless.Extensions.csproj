@@ -17,7 +17,6 @@
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
    </PropertyGroup>
 
-
    <!-- https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets#packing-an-icon-image-file -->
    <ItemGroup>
       <None Include="..\..\nuget.png" Pack="true" Visible="false" PackagePath="\"/>

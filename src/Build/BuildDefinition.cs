@@ -1,13 +1,13 @@
 #region Copyright & License
 
-// Copyright © 2012 - 2025 François Chabot
-//
+// Copyright © 2012-2025 François Chabot
+// 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+// 
 // http://www.apache.org/licenses/LICENSE-2.0
-//
+// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,10 +16,12 @@
 
 #endregion
 
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using JetBrains.Annotations;
+using NuGet.Configuration;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
@@ -44,7 +46,7 @@ namespace Build;
 	InvokedTargets = [nameof(CI)],
 	PublishArtifacts = true,
 	EnableGitHubToken = true,
-	ImportSecrets = [nameof(ReleaseFeedApiKey)],
+	ImportSecrets = [nameof(PreviewFeedApiKey), nameof(ReleaseFeedApiKey)],
 	WritePermissions = [GitHubActionsPermissions.Contents, GitHubActionsPermissions.Packages])]
 [DotNetVerbosityMapping]
 file class BuildDefinition : NukeBuild
@@ -68,7 +70,24 @@ file class BuildDefinition : NukeBuild
 	});
 
 	[NotNull]
-	Target Restore => td => td.DependsOn(Clean)
+	Target AuthenticateGitHubPackageSources => td => td.Unlisted()
+		.OnlyWhenStatic(() => IsServerBuild)
+		.Requires(() => PreviewFeedApiKey)
+		.Executes(() => {
+			var userName = EnvironmentInfo.GetVariable("GITHUB_ACTOR") ?? Environment.UserName ?? "github-actions";
+			var settings = Settings.LoadSpecificSettings(RootDirectory, "NuGet.config");
+			new PackageSourceProvider(settings).LoadPackageSources()
+				.Where(ps => ps.Source.Contains("nuget.pkg.github.com", StringComparison.OrdinalIgnoreCase))
+				.ForEach(packageFeed => DotNetNuGetUpdateSource(s => s.SetConfigFile(RootDirectory / "NuGet.config")
+					.SetName(packageFeed.Name)
+					.SetSource(packageFeed.Source)
+					.SetUsername(userName)
+					.SetPassword(PreviewFeedApiKey)
+					.SetStorePasswordInClearText(v: true)));
+		});
+
+	[NotNull]
+	Target Restore => td => td.DependsOn(Clean, AuthenticateGitHubPackageSources)
 		.Executes(() => {
 			DotNetRestore(s => s.SetConfigFile(RootDirectory / "NuGet.config")
 				.SetProjectFile(Solution));
@@ -222,14 +241,18 @@ file class BuildDefinition : NukeBuild
 	[GitVersion]
 	readonly GitVersion GitVersion = null!;
 
-	[Parameter("NuGet packages' preview feed URL.")]
+	[Parameter("NuGet Packages preview feed API key — a GitHub Personal Access Token (PAT) with read:packages scope.")]
+	[Secret]
+	readonly string PreviewFeedApiKey;
+
+	[Parameter("NuGet packages preview feed URL.")]
 	readonly string PreviewFeedUrl = "https://nuget.pkg.github.com/be-stateless/index.json";
 
-	[Parameter("NuGet packages' release feed API Key.")]
+	[Parameter("NuGet Packages release feed API key — a NuGet.org API key used for publishing packages.")]
 	[Secret]
 	readonly string ReleaseFeedApiKey;
 
-	[Parameter("NuGet packages' release feed URL.")]
+	[Parameter("NuGet packages release feed URL.")]
 	readonly string ReleaseFeedUrl = "https://api.nuget.org/v3/index.json";
 
 	[Secret]

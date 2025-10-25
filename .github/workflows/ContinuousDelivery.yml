@@ -44,6 +44,7 @@ jobs:
       - name: 'Run: CI'
         run: ./build.cmd CI
         env:
+          PreviewFeedApiKey: ${{ secrets.PREVIEW_FEED_API_KEY }}
           ReleaseFeedApiKey: ${{ secrets.RELEASE_FEED_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Publish: nuget-packages'
