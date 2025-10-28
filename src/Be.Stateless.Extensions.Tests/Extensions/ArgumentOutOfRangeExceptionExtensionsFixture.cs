@@ -23,13 +23,13 @@ using System.Globalization;
 namespace Be.Stateless.Extensions;
 
 [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
-public class ArgumentOutOfRangeExceptionFactoryFixture
+public class ArgumentOutOfRangeExceptionExtensionsFixture
 {
 	[Fact]
 	public void DoesNotThrowWhenValueIsBetweenLowerAndBounds()
 	{
 		var value = 5;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
 			.Should()
 			.NotThrow();
 	}
@@ -38,7 +38,7 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 	public void DoesNotThrowWhenValueIsEqualToLowerBound()
 	{
 		var value = 1;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
 			.Should()
 			.NotThrow();
 	}
@@ -47,7 +47,7 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 	public void DoesNotThrowWhenValueIsEqualToUpperBound()
 	{
 		var value = 9;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
 			.Should()
 			.NotThrow();
 	}
@@ -56,7 +56,7 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 	public void ThrowsForDoubles()
 	{
 		var value = 5.5d;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 0.3, upperBound: 4.9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 0.3, upperBound: 4.9))
 			.Should()
 			.ThrowExactly<ArgumentOutOfRangeException>();
 	}
@@ -65,7 +65,7 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 	public void ThrowsWhenValueIsGreaterThanUpperBound()
 	{
 		var value = 10;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
 			.Should()
 			.ThrowExactly<ArgumentOutOfRangeException>()
 			.WithMessage("value (10) must be greater than or equal to '1' and be less than or equal to '9'. (Parameter 'value')\r\nActual value was 10.");
@@ -75,12 +75,12 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 	public void ThrowsWhenValueIsLessThanLowerBound()
 	{
 		var value = 0;
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound: 1, upperBound: 9))
 			.Should()
 			.ThrowExactly<ArgumentOutOfRangeException>()
 			.WithMessage("value (0) must be greater than or equal to '1' and be less than or equal to '9'. (Parameter 'value')\r\nActual value was 0.");
 
-		Invoking(static () => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value: 0, lowerBound: 1, upperBound: 9))
+		Invoking(static () => ArgumentOutOfRangeException.ThrowIfOutOfBounds(0, lowerBound: 1, upperBound: 9))
 			.Should()
 			.ThrowExactly<ArgumentOutOfRangeException>()
 			.WithMessage("0 (0) must be greater than or equal to '1' and be less than or equal to '9'. (Parameter '0')\r\nActual value was 0.");
@@ -93,7 +93,7 @@ public class ArgumentOutOfRangeExceptionFactoryFixture
 		var lowerBound = new ComparableDummy(value: 3);
 		var upperBound = new ComparableDummy(value: 5);
 
-		Invoking(() => ArgumentOutOfRangeExceptionFactory.ThrowIfOutOfBounds(value, lowerBound, upperBound))
+		Invoking(() => ArgumentOutOfRangeException.ThrowIfOutOfBounds(value, lowerBound, upperBound))
 			.Should()
 			.ThrowExactly<ArgumentOutOfRangeException>()
 			.WithMessage(
