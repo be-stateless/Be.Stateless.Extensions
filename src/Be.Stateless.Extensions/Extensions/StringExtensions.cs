@@ -25,6 +25,7 @@ using System.Text;
 namespace Be.Stateless.Extensions;
 
 [SuppressMessage("Naming", "CA1720:Identifier contains type name")]
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 [SuppressMessage("ReSharper", "MemberCanBeInternal", Justification = "Public API.")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Public API.")]
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]

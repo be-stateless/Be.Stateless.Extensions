@@ -24,8 +24,9 @@ using System.Text;
 namespace Be.Stateless.Extensions;
 
 [SuppressMessage("Naming", "CA1720:Identifier contains type name")]
-[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
 public static class ObjectExtensions
 {
 	/// <summary>Performs a <see cref="Action{T}"/> delegate on the <paramref name="object"/> if it is not null.</summary>

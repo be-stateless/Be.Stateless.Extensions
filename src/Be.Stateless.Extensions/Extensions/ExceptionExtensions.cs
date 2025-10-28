@@ -25,6 +25,7 @@ using System.Threading;
 
 namespace Be.Stateless.Extensions;
 
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
 public static class ExceptionExtensions
 {

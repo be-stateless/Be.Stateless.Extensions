@@ -1,10 +1,15 @@
 {
    "stryker-config": {
+      "language-version": "preview",
       "mutation-level": "Complete",
       "ignore-methods": [
          "ToString",
          "ConfigureAwait",
          "*Exception.ctor"
+      ],
+      "mutate": [
+         "!**/ArgumentOutOfRangeExceptionExtensions.cs",
+         "**/*.cs"
       ],
       "reporters": [
          "dots",

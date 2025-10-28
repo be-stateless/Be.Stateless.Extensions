@@ -2,7 +2,7 @@
 
    <PropertyGroup>
       <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
-      <TargetFramework>net9.0</TargetFramework>
+      <TargetFramework>net10.0</TargetFramework>
       <OutputType>Exe</OutputType>
       <NoWarn>$(NoWarn);CS0169;CS0649;</NoWarn>
       <NukeTelemetryVersion>1</NukeTelemetryVersion>
@@ -10,12 +10,12 @@
    </PropertyGroup>
 
    <ItemGroup>
-      <PackageDownload Include="GitVersion.Tool" Version="[6.4.0]"/>
-      <PackageDownload Include="ReportGenerator" Version="[5.4.16]"/>
+      <PackageDownload Include="GitVersion.Tool" Version="[6.5.0]"/>
+      <PackageDownload Include="ReportGenerator" Version="[5.5.0]"/>
    </ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Nuke.Common" Version="9.0.4"/>
+      <PackageReference Include="Nuke.Common" Version="10.0.0"/>
    </ItemGroup>
 
    <ItemGroup>
