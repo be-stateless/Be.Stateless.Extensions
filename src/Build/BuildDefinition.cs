@@ -17,10 +17,10 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
-using JetBrains.Annotations;
 using NuGet.Configuration;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Git;
@@ -38,9 +38,9 @@ using static Serilog.Log;
 
 namespace Build;
 
-[GitHubActions(
+[Common.CI.GitHubActions.GitHubActions(
 	"ContinuousDelivery",
-	GitHubActionsImage.UbuntuLatest,
+	GitHubActionsImage.WindowsLatest,
 	FetchDepth = 0,
 	OnPushBranches = ["master", "feature/*"],
 	InvokedTargets = [nameof(CI)],

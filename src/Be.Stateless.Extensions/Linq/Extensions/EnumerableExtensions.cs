@@ -24,9 +24,10 @@ using System.Threading.Tasks;
 
 namespace Be.Stateless.Linq.Extensions;
 
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Public API.")]
-[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
 public static class EnumerableExtensions
 {
 	/// <summary>Returns distinct elements from a sequence by using a specified <paramref name="comparer"/> to compare values.</summary>
