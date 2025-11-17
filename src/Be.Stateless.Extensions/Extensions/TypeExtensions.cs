@@ -22,8 +22,9 @@ using System.Linq;
 
 namespace Be.Stateless.Extensions;
 
-[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
 public static class TypeExtensions
 {
 	/// <summary>Determines whether a type is a subclass of a generic type, considering both class and interface inheritance.</summary>

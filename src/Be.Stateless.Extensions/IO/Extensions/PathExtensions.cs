@@ -23,6 +23,7 @@ using System.Linq;
 
 namespace Be.Stateless.IO.Extensions;
 
+[SuppressMessage("ReSharper", "ConvertToExtensionBlock")]
 public static class PathExtensions
 {
 	/// <summary>Returns a string representing that part of the path tree that is common to all the paths.</summary>
